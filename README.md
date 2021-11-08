@@ -5,7 +5,7 @@
 ---
 Workout Tracker app to keep track of my daily workout routine and help with my attempts to live healthier!
 
-## [Workout Tracker FM](https://tech-blog-fm.herokuapp.com/)
+## [Workout Tracker FM](https://workout-tracker-fm.herokuapp.com/)
 ### https://github.com/Myuze/workout-tracker-fm
 ---
 ![Workout Tracker](workout-tracker-fm.jpg)
@@ -32,7 +32,7 @@ Workout Tracker app to keep track of my daily workout routine and help with my a
 From the repository directory:
 1. From the CLI use, `npm start`.
 2. Seed DB, `npm run seed`.
-3. Open the page at `localhost:3001`.
+3. Open the page at `localhost:3000`.
 
 ## Contribute:
 
