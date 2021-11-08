@@ -11,12 +11,9 @@ const WorkoutSchema = new Schema({
   exercises: [{
     type: {
       type: String,
-      default: "Enter Type Name",
       allownull: false
     },
     name: {
-      type: String,
-      default: "Enter Exercise Name",
       allownull: false
     },
     duration: {

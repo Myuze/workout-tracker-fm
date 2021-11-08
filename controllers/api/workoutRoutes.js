@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const { Workout } = require('../../models');
 
+// Get aggregated workout exercises data
 router.get('/', async (req, res) => {
   try {
     const workoutData = await Workout.aggregate([{
@@ -11,7 +12,7 @@ router.get('/', async (req, res) => {
         }
       }
     }]);
-    
+
     res.status(200).json(workoutData);
   } catch (error) {
     console.log(error);
@@ -19,6 +20,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Add new workout
 router.post('/', async ({ body }, res) => {
   try {
     const workout = new Workout(body);
@@ -32,6 +34,7 @@ router.post('/', async ({ body }, res) => {
   }
 });
 
+// Update workout exercise
 router.put('/:id', async ({ body, params }, res) => {
   try {
     const exercise = await Workout.findOneAndUpdate(
@@ -47,10 +50,17 @@ router.put('/:id', async ({ body, params }, res) => {
   }
 });
 
+// Get Last 7 Workouts sorted by day decending 
 router.get('/range', async (req, res) => {
   try {
-    const workoutData = await Workout.find({}).sort({ day: -1 }).limit(7);
-    
+    const workoutData = await Workout.aggregate([{
+      $addFields: {
+        totalDuration: {
+          $sum: '$exercises.duration'
+        }
+      }
+    }]).sort({ day: -1 }).limit(7);
+
     res.status(200).json(workoutData);
   } catch (error) {
     console.log(error);
