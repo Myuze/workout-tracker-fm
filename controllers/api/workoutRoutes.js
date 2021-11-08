@@ -48,7 +48,14 @@ router.put('/:id', async ({ body, params }, res) => {
 });
 
 router.get('/range', async (req, res) => {
-
+  try {
+    const workoutData = await Workout.find({}).sort({ day: -1 }).limit(7);
+    
+    res.status(200).json(workoutData);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error', error: error });
+  }
 });
 
 module.exports = router;
