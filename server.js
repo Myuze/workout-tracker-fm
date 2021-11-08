@@ -6,7 +6,6 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 
 const routes = require('./controllers');
-const db = require('./models');
 
 const app = express();
 

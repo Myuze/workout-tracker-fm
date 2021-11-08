@@ -6,7 +6,8 @@ router.use('/exercise', async (req, res) => {
   try {
     res.status(200).sendFile(path.join(__dirname, '../public/exercise.html'));
   } catch (error) {
-    res.status(500).json({ message: 'Internal Server Error'});
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error', error: error });
   }
 });
 
@@ -14,7 +15,8 @@ router.use('/stats', async (req, res) => {
   try {
     res.status(200).sendFile(path.join(__dirname, '../public/stats.html'));
   } catch (error) {
-    res.status(500).json({ message: 'Internal Server Error'});
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error', error: error });
   }
 });
 
